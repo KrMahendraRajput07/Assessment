@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Date Interval Calculator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .parent {
+            margin-top: 100px;
+            margin-left:500px ;
+            width: 25%;
+            padding: 20px;
+            background-color: rgb(138, 191, 191);
+
+        }
+
+        h1 {
+            margin-left: 20px;
+            margin-bottom: 20px;
+            color: rgb(13, 42, 14);
+        }
+
+        #startDate {
+            width: 150px;
+        }
+
+        #endDate {
+            width: 150px;
+
+        }
+
+        .child-12 {
+            padding-left: 20px;
+
+        }
+
+        .child-12 label {
+            padding-right: 30px;
+            font-weight: 800;
+        }
+
+        .text1 {
+            margin-left: 5px;
+
+        }
+
+        .text2 {
+            margin-left: 25px;
+        }
+
+        #calculateBtn {
+            margin-left: 105px;
+        }
+
+        h4 {
+            background-color: rgb(8, 11, 15);
+            width: 25%;
+            margin-left:500px ;
+            color: white;
+            padding: 10px;
+        }
+
+        .resultarea {
+            padding-left: 5px;
+            border-radius: 5px;
+            background-color: rgb(223, 32, 32);
+            color: white;
+            font-weight: 500;
+            width: 30%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parent">
+        <h1>Date Interval</h1>
+
+        <div class="container mt-sm-0">
+            <div class="child-12">
+                <label for="startDate">From:</label>
+                <input type="date" class="text1" id="startDate" />
+            </div>
+
+            <div class="mainform">
+                <label for="endDate" style="margin-left: 20px;">To:</label>
+                <input type="date" class="text2" id="endDate" style="margin-left: 60px;" />
+            </div>
+
+            <div class="mt-3">
+                <button id="calculateBtn" class="btn btn-dark text-white">Calculate</button>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <div class="mt-3">
+
+        <h4>Date Interval between</h4>
+        <div class="resultarea">
+            <p id="result1"></p>
+            <p id="result2"></p>
+            <p id="result3"></p>
+            <p id="result4"></p>
+        </div>
+
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#calculateBtn").on("click", function () {
+                var startDate = moment($("#startDate").val());
+                var endDate = moment($("#endDate").val());
+
+                var years = endDate.diff(startDate, 'years');
+                startDate.add(years, 'years');
+
+                var months = endDate.diff(startDate, 'months');
+                startDate.add(months, 'months');
+
+                var weeks = endDate.diff(startDate, 'weeks');
+                startDate.add(weeks, 'weeks');
+
+                var days = endDate.diff(startDate, 'days');
+
+                var resultText = ' In years: ' + years;
+                $("#result1").text(resultText);
+                var resultText = 'In months:, ' + months;
+                $("#result2").text(resultText);
+                var resultText = 'In weeks:' + weeks;
+                $("#result3").text(resultText);
+                var resultText = 'In days:' + days;
+                $("#result4").text(resultText);
+            });
+        });
+    </script>
+
+
+    <script src="script.js"> </script>
+</body>
+
+</html>
